@@ -12,11 +12,12 @@ load_dotenv()
 responseTemplate = {
     "link": "",
     "name": "",
+    "title": "",
     "content" : "",
     "comments" : ""
 }
 
-def getThreadsByFilter(token, course_id, type: str = "", category: str = "", subcategory: str = "", limit: int = 20) -> List[dict]:
+def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", category: str = "", subcategory: str = "", limit: int = 20) -> List[dict]:
     """
     type: post, announcement, question
     category: General, Assignments, Lectures, Discussion Hours, Social
@@ -31,6 +32,8 @@ def getThreadsByFilter(token, course_id, type: str = "", category: str = "", sub
         users[i["id"]] = i["name"]
     response = r.json()["threads"]
     threads = [i for i in response if i["is_private"] == False]
+    if not pinned:
+        threads = [i for i in threads if i["is_pinned"] == pinned]
     if type:
         threads = [i for i in threads if i["type"] == type]
     if category:
@@ -50,6 +53,7 @@ def getThreadsByFilter(token, course_id, type: str = "", category: str = "", sub
         temp = responseTemplate.copy()
         temp["link"] = f"https://edstem.org/us/courses/{course_id}/discussion/{obj}"
         temp["name"] = users[temp_json["user_id"]]
+        temp["title"] = temp_json["title"]
         temp["content"] = re.sub(CLEANR, '', temp_json["content"])
         temp["comments"] = build_comments_tree(temp_json["comments"], users).strip()
         returnResponse[i] = temp

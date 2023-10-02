@@ -2,3 +2,4 @@ api_tokens
 .env
 test.txt
 /venv
+__pycache__
