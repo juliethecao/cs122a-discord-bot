@@ -17,7 +17,7 @@ responseTemplate = {
     "comments" : ""
 }
 
-def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", category: str = "", subcategory: str = "", limit: int = 20) -> List[dict]:
+def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", category: str = "", subcategory: str = "", limit: int = 100) -> List[dict]:
     """
     type: post, announcement, question
     category: General, Assignments, Lectures, Discussion Hours, Social
