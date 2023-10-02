@@ -11,3 +11,4 @@ headers={'Authorization': 'Bearer ' + token}
 r = requests.request("GET", "https://us.edstem.org/api/courses/48532",  headers=headers)
 u = r.json()
 print(json.dumps(u, indent=1))
+print(json.dumps(u, indent=1))
