@@ -82,4 +82,5 @@ if __name__ == "__main__":
     course_id = os.getenv("COURSE_ID")
     token = os.getenv("ED_TOKEN")
     r = getThreadsByFilter(token, course_id)
-    print(r)
+    print(r[0]["comments"])
+    print(json.dumps(r, indent=1))
