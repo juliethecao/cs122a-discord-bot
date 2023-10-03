@@ -20,7 +20,7 @@ responseTemplate = {
 def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", category: str = "", subcategory: str = "", limit: int = 100) -> List[dict]:
     """
     type: post, announcement, question
-    category: General, Assignments, Lectures, Discussion Hours, Social
+    category: General, Assignments, Lectures, Discussion-Hours, Social
     subcategory: (this is for assignments) A1, A2, A3, A4, A5, A6
     """
     users = {0: "Anonymous"}
@@ -32,7 +32,7 @@ def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", c
         users[i["id"]] = i["name"]
     response = r.json()["threads"]
     threads = [i for i in response if i["is_private"] == False]
-    if not pinned:
+    if not pinned:  
         threads = [i for i in threads if i["is_pinned"] == pinned]
     if type:
         threads = [i for i in threads if i["type"] == type]
