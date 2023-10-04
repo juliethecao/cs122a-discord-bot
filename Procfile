@@ -1,0 +1,1 @@
+worker: python3 bot/discord_bot_api.py
