@@ -16,7 +16,7 @@ categories = ["general", "assignment", "lectures", "discussion-hours", "social"]
 subcategories = ["A1", "A2", "A3", "A4", "A5", "A6"]
 
 client = discord.Client(intents=intents)
-discord_channel_name = "format"
+discord_channel_name = "ed-bot"
 
 @client.event
 async def on_ready():
