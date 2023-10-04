@@ -17,12 +17,15 @@ responseTemplate = {
     "comments" : ""
 }
 
-def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", category: str = "", subcategory: str = "", limit: int = 100) -> List[dict]:
+def getThreadsByFilter(token, course_id, answers = False, pinned: bool = False, type: str = "", category: str = "", subcategory: str = "", limit: int = 100) -> List[dict]:
     """
     type: post, announcement, question
     category: General, Assignments, Lectures, Discussion-Hours, Social
     subcategory: (this is for assignments) A1, A2, A3, A4, A5, A6
     """
+    com = "comments"
+    if answers:
+        com = "answers"
     users = {0: "Anonymous"}
     headers={"Authorization": "Bearer " + token}
     params={"limit" : limit, "offset": 0, "sort": "new"}
@@ -55,10 +58,9 @@ def getThreadsByFilter(token, course_id, pinned: bool = False, type: str = "", c
         temp["name"] = users[temp_json["user_id"]]
         temp["title"] = temp_json["title"]
         temp["content"] = re.sub(CLEANR, '', temp_json["content"])
-        temp["comments"] = build_comments_tree(temp_json["comments"], users).strip()
+        temp["comments"] = build_comments_tree(temp_json[com], users).strip()
         returnResponse[i] = temp
     return returnResponse
-    
 
 def build_comments_tree(comments, users, prefix="") -> str:
     result = ""
@@ -81,6 +83,7 @@ def build_comments_tree(comments, users, prefix="") -> str:
         if comment["comments"]:
             result += build_comments_tree(comment["comments"], users, child_prefix)
     return result
+
 
 if __name__ == "__main__":
     course_id = os.getenv("COURSE_ID")

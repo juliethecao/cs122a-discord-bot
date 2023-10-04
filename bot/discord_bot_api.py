@@ -92,7 +92,7 @@ async def on_message(message):
             category = arguments[1].replace("-", " ").title()
         if len(arguments) > 2 and arguments[2] in subcategories:
             subcategory = arguments[2].upper()
-        resps = getThreadsByFilter(token, course_id, pinned=False, type=arguments[0][1:] , category=category, subcategory=subcategory)
+        resps = getThreadsByFilter(token, course_id, answers=True, pinned=False, type=arguments[0][1:] , category=category, subcategory=subcategory)
         for resp in resps:
             output = f"\"{resp['title']}\" by {resp['name']}\n{resp['link']}\n{resp['content']}\n{resp['comments']}"
             await message.author.send(output)
