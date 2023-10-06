@@ -48,3 +48,14 @@ Category: general, assignments, lectures, discussion-hours, social
 Subcategory: (this is for assignments) A1, A2, A3, A4, A5, A6
 
 ## Preview
+Below is an image when you call the bot. If the `!help` is called, the bot will showcase the commands that you can use.
+
+<img width="537" alt="Screenshot 2023-10-05 at 9 00 41 PM" src="https://github.com/juliethecao/cs122a-discord-bot/assets/116243642/5bce5a51-c38a-4ef5-809f-4fd27078298b">
+
+You will receive the posts privately via your direct messages. 
+<p><img width="69" alt="Screenshot 2023-10-05 at 9 01 01 PM" src="https://github.com/juliethecao/cs122a-discord-bot/assets/116243642/e8942ef0-4cc0-44c8-b2e6-34950f782606"></p>
+
+Here is how the messages will appear through your direct messages.
+<img width="1097" alt="Screenshot 2023-10-05 at 9 01 28 PM" src="https://github.com/juliethecao/cs122a-discord-bot/assets/116243642/8d98a49e-3ea6-4cf8-9247-c195818cce95">
+
+Credit: Discord profile picture by Mimu Bot.
